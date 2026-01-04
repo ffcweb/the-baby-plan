@@ -1,23 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  /* Baltic Blue */
-  --color-baltic-50: #ecf3f9;
-  --color-baltic-100: #d8e7f3;
-  --color-baltic-500: #3e88c1;
-  --color-baltic-800: #19364d;
-  --color-baltic-900: #0c1b27;
+  --color-slate-900: #214761; /* Deepest */
+  --color-slate-800: #375971;
+  --color-slate-700: #4d6c81;
+  --color-slate-500: #647e90;
+  --color-slate-300: #7a91a0;
+  --color-slate-100: #90a3b0; /* Softest */
+}
 
-  /* Yale Blue */
-  --color-yale-500: #3294cd;
-  --color-yale-600: #2877a4;
-  --color-yale-700: #1e597b;
+/* Custom animation for the path appearing */
+@keyframes drawPath {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
 
-  /* Alabaster Grey */
-  --color-alabaster-50: #f2f3f1;
-  --color-alabaster-100: #e6e8e3;
-  --color-alabaster-500: #808a75;
+.timeline-line {
+  animation: drawPath 2s ease-out forwards;
+}
 
-  /* Sky Blue */
-  --color-sky-500: #3da3c2;
+.bubble-shape {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  transition: all 0.5s ease-in-out;
+}
+
+.bubble-shape:hover {
+  border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
+}
+
+.progress-container {
+  @apply w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200;
+}
+
+.progress-fill {
+  @apply h-full bg-slate-900 transition-all duration-1000 ease-out;
+}
+
+.strip-item {
+  @apply border-b border-slate-100 py-12 px-6 transition-all duration-300 hover:bg-slate-50;
 }
