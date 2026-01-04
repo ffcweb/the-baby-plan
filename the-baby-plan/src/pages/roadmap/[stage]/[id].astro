@@ -1,0 +1,49 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+// 1. Tell Astro which URLs exist (Dynamic Params)
+export async function getStaticPaths() {
+  return [
+    { params: { stage: 'pregnancy', id: 'week-12' } },
+    { params: { stage: 'parenting', id: 'month-0' } }, 
+    { params: { stage: 'parenting', id: 'month-12' } }, // Add this!
+  ];
+}
+
+const { stage, id } = Astro.params;
+
+// 2. Fetch the specific Markdown file
+const entry = await getEntry(stage, id);
+
+if (!entry) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <main class="max-w-4xl mx-auto py-12 px-4">
+    <a href="/" class="text-yale-600 hover:underline">← Back to Home</a>
+    
+    <div class="mt-8 bg-white p-8 rounded-2xl shadow-sm border border-alabaster-200">
+      <h1 class="text-4xl font-bold text-baltic-900 mb-2">{entry.data.title}</h1>
+      <p class="text-xl text-gray-500 mb-8">{entry.data.description}</p>
+      
+      <div class="prose prose-baltic max-w-none">
+        <Content />
+      </div>
+      
+      <div class="mt-12 p-6 bg-baltic-50 rounded-xl border border-baltic-100 flex items-center justify-between">
+        <div>
+          <h4 class="font-bold text-baltic-900">Recommended for this stage:</h4>
+          <p class="text-baltic-700">{entry.data.kit}</p>
+        </div>
+        <a href={entry.data.kitLink} class="bg-yale-500 text-white px-6 py-2 rounded-lg font-bold">
+          View on Amazon
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

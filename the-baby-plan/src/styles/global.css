@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  /* Baltic Blue */
+  --color-baltic-50: #ecf3f9;
+  --color-baltic-100: #d8e7f3;
+  --color-baltic-500: #3e88c1;
+  --color-baltic-800: #19364d;
+  --color-baltic-900: #0c1b27;
+
+  /* Yale Blue */
+  --color-yale-500: #3294cd;
+  --color-yale-600: #2877a4;
+  --color-yale-700: #1e597b;
+
+  /* Alabaster Grey */
+  --color-alabaster-50: #f2f3f1;
+  --color-alabaster-100: #e6e8e3;
+  --color-alabaster-500: #808a75;
+
+  /* Sky Blue */
+  --color-sky-500: #3da3c2;
+}

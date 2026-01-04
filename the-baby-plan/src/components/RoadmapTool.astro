@@ -1,0 +1,61 @@
+---
+// Logic for the date picker will go here
+---
+<div class="bg-white p-8 rounded-xl shadow-lg border border-baltic-100 max-w-md mx-auto">
+  <h3 class="text-baltic-900 text-xl font-bold mb-4">Start Your Plan</h3>
+  <label class="block text-sm font-medium text-baltic-800 mb-2">When is your due date (or baby's birthday)?</label>
+  <input 
+    type="date" 
+    id="baby-date" 
+    class="w-full p-3 border border-baltic-200 rounded-md focus:ring-2 focus:ring-yale-500 outline-none"
+  />
+  <button 
+    id="generate-btn"
+    class="w-full mt-4 bg-yale-500 hover:bg-yale-600 text-white font-bold py-3 rounded-md transition-all"
+  >
+    Generate My Roadmap
+  </button>
+</div>
+
+<script>
+  const btn = document.getElementById('generate-btn');
+  
+  btn?.addEventListener('click', () => {
+    const dateInput = (document.getElementById('baby-date') as HTMLInputElement).value;
+    
+    if (!dateInput) {
+      alert('Please select a date to begin your plan.');
+      return;
+    }
+
+    const targetDate = new Date(dateInput);
+    const today = new Date();
+    
+    // Calculate the difference in milliseconds
+    const diffTime = targetDate.getTime() - today.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    let stage = "";
+    let value = 0;
+
+    if (diffDays > 0) {
+      // PREGNANCY: Calculate weeks remaining (approximate)
+      stage = "pregnancy";
+      // Assuming 40 weeks total, calculate current week
+      const weeksToDue = Math.floor(diffDays / 7);
+      value = 40 - weeksToDue;
+      if (value < 1) value = 1;
+    } else {
+      // PARENTING: Calculate months since birth
+      stage = "parenting";
+      const absDiffDays = Math.abs(diffDays);
+      value = Math.floor(absDiffDays / 30); // Approximate months
+    }
+
+    // Redirect to a dynamic URL
+    // Example: /roadmap/pregnancy/week-12
+    const unit = stage === "pregnancy" ? "week" : "month";
+    window.location.href = `/roadmap/${stage}/${unit}-${value}`;
+  });
+</script>
+</script>
