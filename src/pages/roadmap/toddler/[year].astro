@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const toddlerEntries = await getCollection('toddler');
+  return toddlerEntries.map(entry => ({
+    params: { year: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={`${entry.data.title} | Toddler Roadmap`}>
+  <main class="flex flex-col md:flex-row min-h-screen">
+    <aside class="w-full md:w-80 bg-slate-50 border-r border-slate-100 p-8">
+      <div class="sticky top-24">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">The Discovery Stage</span>
+        <h2 class="text-2xl font-bold text-slate-900 mt-2 mb-8">1–4 Years</h2>
+        
+        <nav class="space-y-4">
+          <a href="/roadmap/toddler/year-1" class="block p-4 rounded-2xl bg-white shadow-sm border-l-4 border-slate-900 font-bold">Year 1: Walking & Words</a>
+          <a href="/roadmap/toddler/year-2" class="block p-4 rounded-2xl text-slate-500 hover:bg-white transition-all">Year 2: Independence</a>
+          <a href="/roadmap/toddler/year-3" class="block p-4 rounded-2xl text-slate-500 hover:bg-white transition-all">Year 3: Social Play</a>
+        </nav>
+      </div>
+    </aside>
+
+    <section class="flex-1 p-8 md:p-20">
+      <header class="mb-12">
+        <h1 class="text-5xl font-bold text-slate-900 mb-4">{entry.data.title}</h1>
+        <p class="text-xl text-slate-500">{entry.data.description}</p>
+      </header>
+
+      <div class="prose prose-lg max-w-none mb-16">
+        <Content />
+      </div>
+
+      <div class="bg-slate-50 p-8 rounded-[40px] border border-slate-100">
+        <h3 class="font-bold text-xl mb-4">Recommended for {entry.data.title}</h3>
+        <div class="flex items-center gap-6">
+          <div class="w-24 h-24 bg-slate-200 rounded-2xl flex-shrink-0"></div>
+          <div>
+            <h4 class="font-bold">{entry.data.kit}</h4>
+            <a href={entry.data.kitLink} class="text-slate-900 font-bold border-b border-slate-900 text-sm">View Vetted Option →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="The Gear Lab | The Baby Plan Shopping Hub">
+  <header class="bg-slate-900 text-white py-20 px-4 text-center">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">The Gear Lab</h1>
+      <p class="text-slate-300 text-lg">We audit the tech, test the safety, and find the best value for your 10-year plan.</p>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 py-16">
+    <div class="flex flex-wrap justify-center gap-4 mb-16">
+      {['All Gear', 'Sleep Tech', 'Safety & Security', 'Nursery Basics', 'Developmental Toys'].map((cat) => (
+        <button class="px-6 py-2 rounded-full border border-slate-200 text-slate-700 font-bold hover:bg-slate-900 hover:text-white transition-all text-sm">
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <div class="bg-white rounded-[40px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+        <div class="aspect-square bg-slate-50 flex items-center justify-center p-12">
+           <div class="w-full h-full bg-slate-200 rounded-2xl animate-pulse flex items-center justify-center text-slate-400 font-mono text-xs">PRODUCT_IMAGE_CLOUDINARY</div>
+        </div>
+        <div class="p-8">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Sleep Tech</span>
+              <h3 class="text-xl font-bold text-slate-900">Nanit Pro Camera</h3>
+            </div>
+            <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded">VETTED 2026</span>
+          </div>
+          <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+            The only monitor with a dedicated security audit. Includes computer vision for breathing motion tracking.
+          </p>
+          <div class="flex items-center justify-between gap-4">
+            <div class="text-lg font-bold text-slate-900">$299</div>
+            <a href="https://amazon.com" target="_blank" class="bg-slate-900 text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-slate-700 transition-colors">
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-[40px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+        <div class="aspect-square bg-slate-50 flex items-center justify-center p-12">
+           <div class="w-full h-full bg-slate-200 rounded-2xl flex items-center justify-center text-slate-400 font-mono text-xs text-center px-4">Eero 6+ Mesh Wi-Fi</div>
+        </div>
+        <div class="p-8">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Security</span>
+              <h3 class="text-xl font-bold text-slate-900">Eero 6+ Mesh System</h3>
+            </div>
+            <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded">SAFETY STACK</span>
+          </div>
+          <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+            Eliminate nursery dead zones. Essential for maintaining a 100% stable connection to your smart monitor.
+          </p>
+          <div class="flex items-center justify-between gap-4">
+            <div class="text-lg font-bold text-slate-900">$139</div>
+            <a href="https://amazon.com" target="_blank" class="bg-slate-900 text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-slate-700 transition-colors">
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-[40px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+        <div class="aspect-square bg-slate-50 flex items-center justify-center p-12">
+           <div class="w-full h-full bg-slate-200 rounded-2xl flex items-center justify-center text-slate-400 font-mono text-xs">SNOO Smart Sleeper</div>
+        </div>
+        <div class="p-8">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">Sleep Tech</span>
+              <h3 class="text-xl font-bold text-slate-900">SNOO Smart Sleeper</h3>
+            </div>
+          </div>
+          <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+            The ultimate high-ticket investment for infant sleep. Adds 1-2 hours of extra sleep per night.
+          </p>
+          <div class="flex items-center justify-between gap-4">
+            <div class="text-lg font-bold text-slate-900">$1,695</div>
+            <a href="https://impact.com" target="_blank" class="bg-slate-800 text-white px-6 py-2 rounded-full text-xs font-bold hover:bg-slate-700 transition-colors">
+              View Official Store →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <section class="bg-slate-50 py-20 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+       <h2 class="text-3xl font-bold text-slate-900 mb-6">Want the full 2026 Audit?</h2>
+       <p class="text-slate-600 mb-8">Our PDF guide includes 50+ vetted products and a network security checklist for your home.</p>
+       <a href="#" class="inline-block bg-slate-900 text-white px-10 py-4 rounded-full font-bold">Download Free Guide</a>
+    </div>
+  </section>
+</Layout>

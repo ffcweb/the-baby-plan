@@ -1,7 +1,7 @@
 {
-  "$ref": "#/definitions/pregnancy",
+  "$ref": "#/definitions/toddler",
   "definitions": {
-    "pregnancy": {
+    "toddler": {
       "type": "object",
       "properties": {
         "title": {

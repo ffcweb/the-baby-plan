@@ -17,6 +17,36 @@
           "type": "string",
           "format": "uri"
         },
+        "image": {
+          "type": "string"
+        },
+        "recommendedProducts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "price": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string"
+              },
+              "retailer": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "price",
+              "link",
+              "retailer"
+            ],
+            "additionalProperties": false
+          }
+        },
         "$schema": {
           "type": "string"
         }

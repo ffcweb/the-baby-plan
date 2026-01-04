@@ -1,45 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-slate-900: #214761; /* Deepest */
+  --color-slate-900: #214761;
   --color-slate-800: #375971;
   --color-slate-700: #4d6c81;
   --color-slate-500: #647e90;
   --color-slate-300: #7a91a0;
-  --color-slate-100: #90a3b0; /* Softest */
+  --color-slate-100: #90a3b0;
+  --color-soft-bg: #f8fafb;
 }
 
-/* Custom animation for the path appearing */
-@keyframes drawPath {
-  from {
-    height: 0;
-  }
-  to {
-    height: 100%;
+@layer base {
+  body {
+    @apply bg-soft-bg text-slate-900 antialiased;
   }
 }
 
-.timeline-line {
-  animation: drawPath 2s ease-out forwards;
-}
-
+/* This creates the organic, "river stone" effect */
 .bubble-shape {
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 .bubble-shape:hover {
   border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
-}
-
-.progress-container {
-  @apply w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200;
-}
-
-.progress-fill {
-  @apply h-full bg-slate-900 transition-all duration-1000 ease-out;
-}
-
-.strip-item {
-  @apply border-b border-slate-100 py-12 px-6 transition-all duration-300 hover:bg-slate-50;
 }

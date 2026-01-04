@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+// 1. Get all weeks for the sidebar
+const weeks = await getCollection('parenting');
+// 2. Sort them (Week 1, Week 2...)
+const sortedWeeks = weeks.sort((a, b) => a.slug.localeCompare(b.slug, undefined, {numeric: true}));
+---
+
+<Layout title="Pregnancy Roadmap | The Baby Plan">
+  <div class="flex flex-col md:flex-row min-h-screen">
+    
+    <aside class="w-full md:w-80 bg-slate-50 border-r border-slate-100 p-8">
+      <div class="sticky top-24">
+        <h2 class="text-2xl font-bold text-slate-900 mb-8 italic">The Blueprint</h2>
+        <nav class="space-y-2">
+          {sortedWeeks.map(week => (
+            <a href={`/roadmap/pregnancy/${week.slug}`} class="block p-4 rounded-2xl text-slate-500 hover:bg-white hover:text-slate-900 transition-all border border-transparent hover:border-slate-100">
+              {week.data.title}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-8 md:p-20 bg-white">
+      <div class="max-w-3xl">
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em]">Stage 01</span>
+        <h1 class="text-5xl font-bold text-slate-900 mt-4 mb-6">Pregnancy: The Blueprint</h1>
+        <p class="text-xl text-slate-500 mb-12 leading-relaxed">
+          Welcome to your 40-week organizational guide. Use the sidebar to track your progress, 
+          manage your medical logistics, and audit your gear.
+        </p>
+
+        <div class="bg-slate-900 rounded-[40px] p-10 text-white">
+          <h3 class="text-2xl font-bold mb-4">Ready to begin?</h3>
+          <p class="text-slate-400 mb-8 text-lg">Start with Week 01 to set up your master security and health files.</p>
+          <a href="/roadmap/pregnancy/week-1" class="inline-block bg-white text-slate-900 px-10 py-4 rounded-full font-bold hover:bg-slate-200 transition-all">
+            Start Week 01 →
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>

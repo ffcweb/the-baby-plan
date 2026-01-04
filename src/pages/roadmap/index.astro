@@ -1,0 +1,64 @@
+---
+/* src/pages/roadmap/index.astro */
+import Layout from '../../layouts/Layout.astro'; 
+// If your file is at src/pages/roadmap/index.astro, 
+// '../../' is correct. If the error persists, 
+// check if the file is actually at src/pages/roadmap.astro instead.
+---
+
+<Layout title="The Roadmap | The Baby Plan">
+  <main class="max-w-6xl mx-auto px-4 py-20">
+    <header class="text-center mb-16">
+      <h1 class="text-5xl font-bold text-slate-900 mb-4 tracking-tight">Select Your Stage</h1>
+      <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        Every stage of parenting requires a different tactical approach. Choose your current milestone to begin your audit.
+      </p>
+    </header>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <a href="/roadmap/pregnancy" class="group p-10 bg-white border border-slate-100 rounded-[48px] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+        <div class="flex flex-col h-full">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Stage 01</span>
+          <h2 class="text-3xl font-bold text-slate-900 mb-2">The Blueprint</h2>
+          <p class="text-slate-500 mb-8">Pregnancy Week 1–40: Logistics, security, and health setup.</p>
+          <div class="mt-auto flex items-center text-slate-900 font-bold">
+            Explore Path <span class="ml-2 group-hover:ml-4 transition-all">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/roadmap/parenting" class="group p-10 bg-white border border-slate-100 rounded-[48px] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+        <div class="flex flex-col h-full">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Stage 02</span>
+          <h2 class="text-3xl font-bold text-slate-900 mb-2">The Arrival</h2>
+          <p class="text-slate-500 mb-8">Newborn Month 1–12: Sleep systems, feeding tech, and recovery.</p>
+          <div class="mt-auto flex items-center text-slate-900 font-bold">
+            Explore Path <span class="ml-2 group-hover:ml-4 transition-all">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/roadmap/toddler" class="group p-10 bg-white border border-slate-100 rounded-[48px] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+        <div class="flex flex-col h-full">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Stage 03</span>
+          <h2 class="text-3xl font-bold text-slate-900 mb-2">The Discovery</h2>
+          <p class="text-slate-500 mb-8">Toddler Years 1–4: Independence, safety, and development gear.</p>
+          <div class="mt-auto flex items-center text-slate-900 font-bold">
+            Explore Path <span class="ml-2 group-hover:ml-4 transition-all">→</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/roadmap/youth" class="group p-10 bg-white border border-slate-100 rounded-[48px] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
+        <div class="flex flex-col h-full">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Stage 04</span>
+          <h2 class="text-3xl font-bold text-slate-900 mb-2">The Legacy</h2>
+          <p class="text-slate-500 mb-8">Youth Years 5–10+: School logistics and digital safety audits.</p>
+          <div class="mt-auto flex items-center text-slate-900 font-bold">
+            Explore Path <span class="ml-2 group-hover:ml-4 transition-all">→</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </main>
+</Layout>

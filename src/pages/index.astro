@@ -3,75 +3,77 @@ import Layout from '../layouts/Layout.astro';
 import RoadmapTool from '../components/RoadmapTool.astro';
 ---
 
-<Layout title="The Baby Plan | Let's Talk">
-  
-  <main class="min-h-screen bg-white">
-    <header class="py-24 px-4 max-w-4xl mx-auto text-center">
-      <h1 class="text-slate-900 text-4xl md:text-6xl font-bold tracking-tight mb-8">
-        Hi. How can we help you <span class="italic text-slate-500">plan</span> today?
-      </h1>
-      <p class="text-xl text-slate-700 mb-12">
-        Every family starts somewhere. Tell us your stage, and we'll show you the next step.
-      </p>
-      
-      <div class="inline-block bg-slate-100 p-8 rounded-[40px] rounded-bl-none shadow-sm text-left border border-slate-200">
-        <RoadmapTool />
-      </div>
-    </header>
+<Layout title="The Baby Plan | Your 10-Year Parenting Roadmap">
+	<header class="py-20 px-4 text-center">
+		<h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-8 tracking-tight">
+			Hello. Where are we <br class="hidden md:block"/> in your <span class="italic text-slate-500">journey</span> today?
+		</h1>
+		<div class="max-w-md mx-auto bg-white p-8 rounded-[40px] shadow-xl border border-slate-100">
+			<p class="text-xs text-slate-500 mb-4 font-bold uppercase tracking-widest">Personalized Roadmap</p>
+			<RoadmapTool />
+		</div>
+	</header>
 
-    <section class="py-20 px-4 max-w-6xl mx-auto">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-        
-        <div class="flex flex-col items-center text-center group">
-          <div class="bubble-shape w-48 h-48 bg-slate-900 flex items-center justify-center p-8 mb-6 shadow-xl group-hover:scale-105 transition-transform">
-            <span class="text-white font-bold text-lg leading-tight">I'm expecting a baby</span>
-          </div>
-          <div class="max-w-xs">
-            <h3 class="font-bold text-slate-900 text-xl mb-2">The Blueprint</h3>
-            <p class="text-slate-500 text-sm">Week-by-week guidance for a healthy, organized pregnancy.</p>
-            <a href="/roadmap/pregnancy/week-1" class="inline-block mt-4 text-slate-900 font-bold border-b-2 border-slate-300 hover:border-slate-900">Explore Stage →</a>
-          </div>
-        </div>
+	<section class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-12 py-12">
+		
+		<div class="flex flex-col items-center text-center group">
+			<div class="bubble-shape w-48 h-48 bg-slate-900 flex items-center justify-center p-6 mb-6 shadow-xl group-hover:scale-105">
+				<h3 class="text-white text-lg font-bold leading-tight">The <br/> Blueprint</h3>
+			</div>
+			<div class="max-w-xs">
+				<h4 class="font-bold text-slate-900 mb-1">Pregnancy</h4>
+				<p class="text-slate-500 text-xs">Week 1–40: Health, Logistics, and Prep.</p>
+				<a href="/roadmap/pregnancy/week-1" class="inline-block mt-3 text-sm text-slate-900 font-bold border-b border-slate-300">Start Path →</a>
+			</div>
+		</div>
 
-        <div class="flex flex-col items-center text-center group">
-          <div class="bubble-shape w-64 h-64 bg-slate-100 border-2 border-dashed border-slate-300 flex items-center justify-center p-8 mb-6 shadow-inner group-hover:bg-white transition-colors">
-            <div class="text-slate-900">
-              <span class="text-xs font-mono uppercase tracking-widest block mb-2">Essential PDF</span>
-              <span class="font-bold text-lg">Smart Nursery Audit</span>
-            </div>
-          </div>
-          <div class="max-w-xs">
-             <input type="email" placeholder="Your email" class="w-full mb-2 p-3 rounded-full border border-slate-200 text-sm outline-none focus:ring-2 focus:ring-slate-500" />
-             <button class="w-full bg-slate-700 text-white py-3 rounded-full font-bold hover:bg-slate-900">Send me the Guide</button>
-          </div>
-        </div>
+		<div class="flex flex-col items-center text-center group">
+			<div class="bubble-shape w-48 h-48 bg-slate-700 flex items-center justify-center p-6 mb-6 shadow-xl group-hover:scale-105">
+				<h3 class="text-white text-lg font-bold leading-tight">The <br/> Arrival</h3>
+			</div>
+			<div class="max-w-xs">
+				<h4 class="font-bold text-slate-900 mb-1">0–12 Months</h4>
+				<p class="text-slate-500 text-xs">Sleep training, feeding, and recovery.</p>
+				<a href="/roadmap/parenting/month-1" class="inline-block mt-3 text-sm text-slate-900 font-bold border-b border-slate-300">View Month →</a>
+			</div>
+		</div>
 
-        <div class="flex flex-col items-center text-center group">
-          <div class="bubble-shape w-48 h-48 bg-slate-500 flex items-center justify-center p-8 mb-6 shadow-xl group-hover:scale-105 transition-transform">
-            <span class="text-white font-bold text-lg leading-tight">I have a newborn</span>
-          </div>
-          <div class="max-w-xs">
-            <h3 class="font-bold text-slate-900 text-xl mb-2">The Arrival</h3>
-            <p class="text-slate-500 text-sm">Navigating the fourth trimester, sleep, and newborn care.</p>
-            <a href="/roadmap/parenting/month-1" class="inline-block mt-4 text-slate-900 font-bold border-b-2 border-slate-300 hover:border-slate-900">Explore Stage →</a>
-          </div>
-        </div>
+		<div class="flex flex-col items-center text-center group">
+			<div class="bubble-shape w-48 h-48 bg-slate-500 flex items-center justify-center p-6 mb-6 shadow-xl group-hover:scale-105">
+				<h3 class="text-white text-lg font-bold leading-tight">The <br/> Discovery</h3>
+			</div>
+			<div class="max-w-xs">
+				<h4 class="font-bold text-slate-900 mb-1">1–4 Years</h4>
+				<p class="text-slate-500 text-xs">Toddler milestones and early learning.</p>
+				<a href="/roadmap/toddler/year-1" class="inline-block mt-3 text-sm text-slate-900 font-bold border-b border-slate-300">Explore Years →</a>
+			</div>
+		</div>
 
-      </div>
-    </section>
+		<div class="flex flex-col items-center text-center group">
+			<div class="bubble-shape w-48 h-48 bg-slate-300 flex items-center justify-center p-6 mb-6 shadow-xl group-hover:scale-105">
+				<h3 class="text-slate-900 text-lg font-bold leading-tight">The <br/> Legacy</h3>
+			</div>
+			<div class="max-w-xs">
+				<h4 class="font-bold text-slate-900 mb-1">5–10+ Years</h4>
+				<p class="text-slate-500 text-xs">School readiness and long-term planning.</p>
+				<a href="/roadmap/youth/year-5" class="inline-block mt-3 text-sm text-slate-900 font-bold border-b border-slate-300">See Future →</a>
+			</div>
+		</div>
+	</section>
 
-    <section class="bg-slate-50 py-24 px-4 text-center">
-      <div class="max-w-3xl mx-auto">
-        <p class="text-2xl text-slate-700 italic leading-relaxed">
-          "The best plan isn't the one that's perfect; it's the one that makes you feel ready for whatever comes next."
-        </p>
-        <div class="mt-8 flex items-center justify-center gap-4">
-           <div class="w-12 h-px bg-slate-300"></div>
-           <span class="font-bold text-slate-900 uppercase tracking-tighter">The Baby Plan Philosophy</span>
-           <div class="w-12 h-px bg-slate-300"></div>
-        </div>
-      </div>
-    </section>
-  </main>
+	<section class="max-w-4xl mx-auto py-16 px-4">
+		<div class="bg-white rounded-[50px] p-10 shadow-sm border border-slate-100 flex flex-col md:flex-row items-center gap-8">
+			<div class="bubble-shape w-32 h-32 bg-slate-100 flex-shrink-0 flex items-center justify-center font-bold">PDF</div>
+			<div>
+				<h2 class="text-2xl font-bold text-slate-900 mb-2">The 2026 Master Shopping List</h2>
+				<p class="text-slate-600 mb-6 text-sm">Download our curated list of vetted products for every stage—from organic crib mattresses to hack-proof monitors.</p>
+				<form class="flex gap-2">
+					<input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded-full border border-slate-200 outline-none" />
+					<button class="bg-slate-900 text-white px-6 py-2 rounded-full font-bold text-sm">Send List</button>
+				</form>
+			</div>
+		</div>
+	</section>
 
+	
 </Layout>

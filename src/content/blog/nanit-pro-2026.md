@@ -1,8 +1,7 @@
 ---
 title: "Nanit Pro: 2026 Smart Nursery Audit"
-description: "Why the Nanit requires a dedicated network audit and the best Wi-Fi settings for hack-proof sleep."
-image: "https://cloudinary.com/your-image.jpg"
-date: "2026-01-03"
+date: 2026-01-04
+description: "Why the Nanit requires a dedicated network audit..."
 ---
 
 ## Technical Hook

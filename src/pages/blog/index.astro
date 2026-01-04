@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="The Resource Lab | Blog">
+  <main class="max-w-6xl mx-auto px-4 py-20">
+    <header class="mb-16">
+      <h1 class="text-4xl font-bold text-slate-900 mb-4 tracking-tight">The Resource Lab</h1>
+      <p class="text-slate-500">Expert audits and parenting logistics.</p>
+    </header>
+
+    <div class="grid md:grid-cols-2 gap-12">
+      {sortedPosts.map(post => (
+        <article class="group">
+          <a href={`/blog/${post.slug}`} class="block">
+            <div class="aspect-video bg-slate-100 rounded-[40px] mb-6 overflow-hidden border border-slate-100 shadow-sm group-hover:shadow-xl transition-all">
+              <div class="w-full h-full flex items-center justify-center text-slate-300 font-bold italic">thebabyplan.com</div>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-900 mt-2 mb-4 group-hover:text-slate-700">{post.data.title}</h2>
+            <p class="text-slate-500 line-clamp-2 mb-6">{post.data.description}</p>
+            <span class="inline-block font-bold text-slate-900 border-b-2 border-slate-200 group-hover:border-slate-900">Read Article →</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  </main>
+</Layout>

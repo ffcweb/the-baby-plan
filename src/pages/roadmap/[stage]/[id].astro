@@ -1,49 +1,75 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
 import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
 
-// 1. Tell Astro which URLs exist (Dynamic Params)
 export async function getStaticPaths() {
+  const pregnancy = await getCollection('pregnancy');
+  const parenting = await getCollection('parenting');
+  const toddler = await getCollection('toddler');
+  const youth = await getCollection('youth');
+
   return [
-    { params: { stage: 'pregnancy', id: 'week-12' } },
-    { params: { stage: 'parenting', id: 'month-0' } }, 
-    { params: { stage: 'parenting', id: 'month-12' } }, // Add this!
+    ...pregnancy.map(entry => ({ params: { stage: 'pregnancy', id: entry.slug }, props: { entry } })),
+    ...parenting.map(entry => ({ params: { stage: 'parenting', id: entry.slug }, props: { entry } })),
+    ...toddler.map(entry => ({ params: { stage: 'toddler', id: entry.slug }, props: { entry } })),
+    ...youth.map(entry => ({ params: { stage: 'youth', id: entry.slug }, props: { entry } })),
   ];
 }
 
-const { stage, id } = Astro.params;
-
-// 2. Fetch the specific Markdown file
-const entry = await getEntry(stage, id);
-
-if (!entry) {
-  return Astro.redirect('/404');
-}
-
+const { entry } = Astro.props;
 const { Content } = await entry.render();
+const { stage } = Astro.params;
 ---
 
-<Layout title={entry.data.title}>
-  <main class="max-w-4xl mx-auto py-12 px-4">
-    <a href="/" class="text-yale-600 hover:underline">← Back to Home</a>
+<Layout title={`${entry.data.title} | The Baby Plan`}>
+  <main class="max-w-5xl mx-auto px-4 py-16">
     
-    <div class="mt-8 bg-white p-8 rounded-2xl shadow-sm border border-alabaster-200">
-      <h1 class="text-4xl font-bold text-baltic-900 mb-2">{entry.data.title}</h1>
-      <p class="text-xl text-gray-500 mb-8">{entry.data.description}</p>
+    <nav class="mb-8 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400">
+      <a href="/roadmap" class="hover:text-slate-900">Roadmap</a>
+      <span>/</span>
+      <span class="text-slate-900">{stage}</span>
+    </nav>
+
+    <header class="mb-12">
+      <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6">{entry.data.title}</h1>
+      <p class="text-xl text-slate-500 max-w-2xl leading-relaxed">{entry.data.description}</p>
+    </header>
+
+    <div class="grid lg:grid-cols-3 gap-12">
       
-      <div class="prose prose-baltic max-w-none">
-        <Content />
-      </div>
-      
-      <div class="mt-12 p-6 bg-baltic-50 rounded-xl border border-baltic-100 flex items-center justify-between">
-        <div>
-          <h4 class="font-bold text-baltic-900">Recommended for this stage:</h4>
-          <p class="text-baltic-700">{entry.data.kit}</p>
+      <div class="lg:col-span-2">
+        <div class="prose prose-lg prose-slate max-w-none 
+                    prose-headings:text-slate-900 prose-headings:font-bold
+                    prose-strong:text-slate-900">
+          <Content />
         </div>
-        <a href={entry.data.kitLink} class="bg-yale-500 text-white px-6 py-2 rounded-lg font-bold">
-          View on Amazon
-        </a>
       </div>
+
+      <aside class="space-y-8">
+        <div class="bg-slate-900 rounded-[40px] p-8 text-white shadow-xl">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-4">Stage Essential</span>
+          <h3 class="text-xl font-bold mb-2">{entry.data.kit}</h3>
+          <p class="text-slate-400 text-sm mb-6 leading-relaxed">We've audited this specifically for the {stage} phase.</p>
+          <a href={entry.data.kitLink} target="_blank" class="block w-full text-center bg-white text-slate-900 py-3 rounded-2xl font-bold hover:bg-slate-200 transition-all">
+            Check Price →
+          </a>
+        </div>
+
+        {entry.data.recommendedProducts && (
+          <div class="bg-white border border-slate-100 rounded-[40px] p-8 shadow-sm">
+            <h4 class="font-bold text-slate-900 mb-4">Supporting Gear</h4>
+            <div class="space-y-6">
+              {entry.data.recommendedProducts.map((product) => (
+                <div class="border-b border-slate-50 pb-4 last:border-0">
+                  <p class="font-bold text-slate-900 text-sm">{product.name}</p>
+                  <p class="text-xs text-slate-500 mb-2">{product.price} at {product.retailer}</p>
+                  <a href={product.link} target="_blank" class="text-xs font-bold text-slate-900 border-b border-slate-900">View Product</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </aside>
     </div>
   </main>
 </Layout>

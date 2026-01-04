@@ -1,23 +1,35 @@
 {
-  "$ref": "#/definitions/pregnancy",
+  "$ref": "#/definitions/blog",
   "definitions": {
-    "pregnancy": {
+    "blog": {
       "type": "object",
       "properties": {
         "title": {
           "type": "string"
         },
+        "date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
         "description": {
           "type": "string"
         },
-        "kit": {
+        "image": {
           "type": "string"
         },
-        "kitLink": {
-          "type": "string",
-          "format": "uri"
-        },
-        "image": {
+        "downloadFile": {
           "type": "string"
         },
         "recommendedProducts": {
@@ -53,9 +65,8 @@
       },
       "required": [
         "title",
-        "description",
-        "kit",
-        "kitLink"
+        "date",
+        "description"
       ],
       "additionalProperties": false
     }
